@@ -6,6 +6,8 @@
   --dark-green: #4a5b4c;
   --darkest-green: #032e15;
 
+  --light-yellow: #f6f2e5;
+
   --pale-taupe: #ccbcaf;
 }
 
@@ -17,7 +19,7 @@ body {
   font-family: "calibre", "Helvetica Neue", "Helvetica", Helvetica, Arial,
     sans-serif;
   font-weight: 400;
-  background: var(--white);
+  background: var(--light-yellow);
   color: var(--darkest-green);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -122,7 +124,7 @@ canvas {
   position: fixed;
   width: 100%;
   height: 48px;
-  background: var(--white);
+  background: var(--light-yellow);
   border-bottom: 1px solid var(--darkest-green);
   font-family: "Canela Web", serif;
   font-weight: 100;
@@ -141,7 +143,7 @@ canvas {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   height: 48px;
 }
@@ -941,7 +943,7 @@ div.index-br-green-dots {
 }
 .index-facts__wrapper {
   margin: 5px;
-  border: 1px solid #ff5734;
+  border: 1px solid var(--dark-green);
 }
 @media only screen and (min-width: 770px) {
   .index-facts__wrapper {
@@ -1065,7 +1067,7 @@ div.index-br-green-dots {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  background-color: #ff5734;
+  background-color: var(--dark-green);
   color: white;
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg);
@@ -1106,7 +1108,7 @@ div.index-br-green-dots {
 }
 .index-fact__intro h6 {
   margin-top: 4em;
-  color: #ff5734;
+  color: var(--dark-green);
 }
 @media only screen and (min-width: 770px) {
   .index-fact__intro h6 {
@@ -1181,7 +1183,7 @@ div.index-br-green-dots {
 }
 .index-events header {
   position: relative;
-  border-bottom: 1px solid #ff5734;
+  border-bottom: 1px solid var(--dark-green);
   padding-bottom: 16px;
   z-index: 2;
 }
@@ -1272,13 +1274,13 @@ div.index-br-green-dots {
     border-color 275ms cubic-bezier(0.52, 0.12, 0.46, 1.1);
 }
 .index-event__detail .button-map:hover {
-  background: #ff5734;
+  background: var(--dark-green);
   color: #fff;
-  border-color: #ff5734;
+  border-color: var(--dark-green);
 }
 .index-event__divider {
   position: relative;
-  border-top: 1px solid #ff5734;
+  border-top: 1px solid var(--dark-green);
   z-index: 2;
   margin-bottom: 48px;
 }
@@ -1468,7 +1470,7 @@ div.index-br-green-dots {
   left: 31px;
   width: 30px;
   height: 3px;
-  background: #ff5734;
+  background: var(--dark-green);
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
 }
@@ -1480,7 +1482,7 @@ div.index-br-green-dots {
   left: 31px;
   width: 30px;
   height: 3px;
-  background: #ff5734;
+  background: var(--dark-green);
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
@@ -1696,7 +1698,7 @@ div.index-br-green-dots {
   margin-top: 12em;
 }
 .index-registry a {
-  color: #ff5734;
+  color: var(--dark-green);
   text-decoration: underline;
 }
 .index-rsvp {
@@ -1760,10 +1762,10 @@ div.index-br-green-dots {
 }
 .index-rsvp__option.is-active {
   background: white;
-  border: 1px solid #ff5734;
+  border: 1px solid var(--dark-green);
 }
 .index-rsvp__button {
-  background: #ff5734;
+  background: var(--dark-green);
   color: #fff;
   border: none;
   width: 100%;
@@ -1794,7 +1796,7 @@ div.index-br-green-dots {
 .index-rsvp__success span {
   font-family: "Canela Web", serif;
   font-size: 72px;
-  color: #ff5734;
+  color: var(--dark-green);
 }
 .index-rsvp__left {
   position: absolute;
