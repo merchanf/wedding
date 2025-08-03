@@ -1303,19 +1303,6 @@ div.index-br-green-dots {
 .index-event__add .index-event__graphic {
   top: -30px;
 }
-.index-event__pb {
-  padding-bottom: 78vw;
-}
-@media only screen and (min-width: 376px) {
-  .index-event__pb {
-    padding-bottom: 90vw;
-  }
-}
-@media only screen and (min-width: 770px) {
-  .index-event__pb {
-    padding-bottom: 84vw;
-  }
-}
 .index-event__image {
   width: 300px;
   height: 300px;
