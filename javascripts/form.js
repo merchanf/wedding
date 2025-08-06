@@ -3,6 +3,10 @@ const re = "b4e97696fdb417baec7f5170ecae522";
 const mi = "b12890050b42794680af62fb5a046c14f";
 const cancion = `${doo}${re}${mi}`;
 
+const inicializar = () => {
+  $("#lista-acompanantes-wrapper").hide();
+};
+
 const filtrarInvitados = (invitados) => {
   return invitados.filter((record) => {
     const esTierA = record.fields.Tier === "A";
@@ -56,11 +60,13 @@ $("#lista-invitados-input").on("change", async function () {
     const $lista = $("#lista-acompanantes");
     $lista.empty();
 
-    if (
-      invitadoSeleccionado &&
-      Array.isArray(invitadoSeleccionado.fields["Nombre (from Viene con)"]) &&
-      invitadoSeleccionado.fields["Nombre (from Viene con)"].length > 0
-    ) {
+    if (invitadoSeleccionado.fields["Nombre (from Viene con)"].length > 1) {
+      $("#lista-acompanantes-wrapper").show();
+    } else {
+      $("#lista-acompanantes-wrapper").hide();
+    }
+
+    if (invitadoSeleccionado.fields["Nombre (from Viene con)"].length > 0) {
       invitadoSeleccionado.fields["Nombre (from Viene con)"].forEach(
         (nombre) => {
           const $li = $("<li></li>");
@@ -74,6 +80,8 @@ $("#lista-invitados-input").on("change", async function () {
           $lista.append($li);
         }
       );
+    } else {
+      $("#lista-acompanantes-wrapper").hide();
     }
   } catch (error) {
     console.error(error);
@@ -98,4 +106,7 @@ async function fetchInvitados() {
   }
 }
 
-fetchInvitados();
+$(document).ready(function () {
+  inicializar();
+  fetchInvitados();
+});

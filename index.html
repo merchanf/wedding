@@ -968,19 +968,32 @@
             <datalist id="lista-invitados">
             </datalist>
 
-            <h5>Voy con</h5>
-            <ul id="lista-acompanantes">
-            </ul>
+            <div id="lista-acompanantes-wrapper">
+              <h5>Voy con</h5>
+                <ul id="lista-acompanantes">
+              </ul>
+            </div>
 
             <h5>Tu respuesta</h5>
             <div class="index-rsvp__options">
-              <div class="index-rsvp__option is-active js-rsvp-option" data-value="YES">Acepta con alegría</div>
-              <div class="index-rsvp__option js-rsvp-option" data-value="NO">Declina con pesar</div>
+              <div class="index-rsvp__option is-active js-rsvp-option" data-value="YES">Claro que voy!</div>
+              <div class="index-rsvp__option js-rsvp-option" data-value="NO">No iré</div>
             </div>
 
             <div class="index-rsvp__show is-active js-rsvp-show">
-              <h5>Dietary Restrictions</h5>
-              <input class="js-form-diet" type="text" placeholder="List any diet restrictions">
+              <h5>Tienes alguna restriccion dietaria?</h5>
+              <input class="js-form-diet" type="text" placeholder="No como cerdo, soy vegetariano, etc." name="diet" id="diet" />
+
+              <h5>Tienes alguna preferencia de bebida?</h5>
+              <select class="js-form-drinks" name="cars" id="cars">
+                <option value="whiskey">Whiskey</option>
+                <option value="vino">Vino</option>
+                <option value="cocteles">Cocteles</option>
+                <option value="aguardiente">Aguardiente</option>
+                <option value="agua-con-gas">Agua con gas</option>
+                <option value="agua-natural">Agua natural</option>
+                <option value="gaseosas">Gaseosas</option>
+              </select>
             </div>
 
             <button class="index-rsvp__button">Submit</button>

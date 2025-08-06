@@ -2535,7 +2535,51 @@ div.save-br-green-dots svg {
   box-sizing: inherit;
 }
 
+#lista-acompanantes-wrapper {
+  display: none;
+}
+
 #lista-acompanantes > * {
   margin-bottom: 1rem;
   list-style: none;
+}
+
+/* Select styling to match inputs */
+select.js-form-drinks {
+  color: var(--darkest-green);
+  font-weight: 500;
+  border: 1px solid var(--darkest-green);
+  background: var(--light-yellow);
+  width: 100%;
+  font-size: 24px;
+  padding: 20px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding-right: 50px;
+  transition: all 250ms ease-out;
+  background: field;
+}
+
+select.js-form-drinks:focus {
+  outline: none;
+  border-color: var(--dark-green);
+}
+
+select.js-form-drinks:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Style the placeholder-like disabled option */
+select.js-form-drinks option[disabled] {
+  color: #bac2cf;
+}
+
+/* Ensure options have proper styling */
+select.js-form-drinks option {
+  color: var(--darkest-green);
+  background: var(--light-yellow);
+  padding: 10px;
 }
