@@ -47,44 +47,32 @@ const cargarInvitados = (invitados) => {
 };
 
 $("#lista-invitados-input").on("change", async function () {
-  try {
-    const nombreSeleccionado = $(this).val();
-    console.log("Nombre seleccionado:", nombreSeleccionado);
-    const invitados = window.invitados || [];
-    let invitadoSeleccionado = invitados.find(
-      (record) =>
-        record.fields.Nombre &&
-        record.fields.Nombre.toLowerCase() === nombreSeleccionado.toLowerCase()
-    );
+  const nombreSeleccionado = $(this).val();
+  console.log("Nombre seleccionado:", nombreSeleccionado);
+  const invitados = window.invitados || [];
+  let invitadoSeleccionado = invitados.find(
+    (record) =>
+      record.fields.Nombre &&
+      record.fields.Nombre.toLowerCase() === nombreSeleccionado.toLowerCase()
+  );
 
-    const $lista = $("#lista-acompanantes");
-    $lista.empty();
+  const $lista = $("#lista-acompanantes");
+  $lista.empty();
 
-    if (invitadoSeleccionado.fields["Nombre (from Viene con)"].length > 1) {
-      $("#lista-acompanantes-wrapper").show();
-    } else {
-      $("#lista-acompanantes-wrapper").hide();
-    }
-
-    if (invitadoSeleccionado.fields["Nombre (from Viene con)"].length > 0) {
-      invitadoSeleccionado.fields["Nombre (from Viene con)"].forEach(
-        (nombre) => {
-          const $li = $("<li></li>");
-          const $wrapper = $('<div class="checkbox-wrapper-13"></div>');
-          const $checkbox = $(
-            '<input type="checkbox" name="plus-one" value="yes">'
-          );
-          const $label = $("<label></label>").text(nombre);
-          $wrapper.append($checkbox).append($label);
-          $li.append($wrapper);
-          $lista.append($li);
-        }
+  if (invitadoSeleccionado.fields["Nombre (from Viene con)"].length > 0) {
+    invitadoSeleccionado.fields["Nombre (from Viene con)"].forEach((nombre) => {
+      const $li = $("<li></li>");
+      const $wrapper = $('<div class="checkbox-wrapper-13"></div>');
+      const $checkbox = $(
+        '<input type="checkbox" name="plus-one" value="yes">'
       );
-    } else {
-      $("#lista-acompanantes-wrapper").hide();
-    }
-  } catch (error) {
-    console.error(error);
+      const $label = $("<label></label>").text(nombre);
+      $wrapper.append($checkbox).append($label);
+      $li.append($wrapper);
+      $lista.append($li);
+    });
+  } else {
+    $("#lista-acompanantes-wrapper").hide();
   }
 });
 

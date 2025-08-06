@@ -2589,3 +2589,15 @@ select:required:invalid {
 option[value=""][disabled] {
   display: none;
 }
+
+#not-in-list {
+  margin-top: 1rem;
+}
+
+#whatsapp-link {
+  display: inline-block;
+  color: var(--dark-green);
+  text-decoration: underline;
+  font-size: 18px;
+  border-radius: 5px;
+}
