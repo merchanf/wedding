@@ -2534,3 +2534,8 @@ div.save-br-green-dots svg {
 .checkbox-wrapper-13 *:after {
   box-sizing: inherit;
 }
+
+#lista-acompanantes > * {
+  margin-bottom: 1rem;
+  list-style: none;
+}

@@ -26,7 +26,10 @@ const cargarInvitados = (invitados) => {
           record.fields.Nombre.toLowerCase().startsWith(valor.toLowerCase())
       )
       .forEach((record) => {
-        $("<option>").val(record.fields.Nombre).appendTo($datalist);
+        $("<option>")
+          .val(record.fields.Nombre)
+          .attr("data-id", record.id)
+          .appendTo($datalist);
       });
   }
 
@@ -39,6 +42,44 @@ const cargarInvitados = (invitados) => {
   });
 };
 
+$("#lista-invitados-input").on("change", async function () {
+  try {
+    const nombreSeleccionado = $(this).val();
+    console.log("Nombre seleccionado:", nombreSeleccionado);
+    const invitados = window.invitados || [];
+    let invitadoSeleccionado = invitados.find(
+      (record) =>
+        record.fields.Nombre &&
+        record.fields.Nombre.toLowerCase() === nombreSeleccionado.toLowerCase()
+    );
+
+    const $lista = $("#lista-acompanantes");
+    $lista.empty();
+
+    if (
+      invitadoSeleccionado &&
+      Array.isArray(invitadoSeleccionado.fields["Nombre (from Viene con)"]) &&
+      invitadoSeleccionado.fields["Nombre (from Viene con)"].length > 0
+    ) {
+      invitadoSeleccionado.fields["Nombre (from Viene con)"].forEach(
+        (nombre) => {
+          const $li = $("<li></li>");
+          const $wrapper = $('<div class="checkbox-wrapper-13"></div>');
+          const $checkbox = $(
+            '<input type="checkbox" name="plus-one" value="yes">'
+          );
+          const $label = $("<label></label>").text(nombre);
+          $wrapper.append($checkbox).append($label);
+          $li.append($wrapper);
+          $lista.append($li);
+        }
+      );
+    }
+  } catch (error) {
+    console.error(error);
+  }
+});
+
 async function fetchInvitados() {
   try {
     const response = await axios.get(
@@ -50,6 +91,7 @@ async function fetchInvitados() {
         },
       }
     );
+    window.invitados = response.data.records;
     cargarInvitados(response.data.records);
   } catch (error) {
     console.error(error);
