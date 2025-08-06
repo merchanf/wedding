@@ -2548,11 +2548,10 @@ div.save-br-green-dots svg {
 select.js-form-drinks {
   color: var(--darkest-green);
   font-weight: 500;
-  border: 1px solid var(--darkest-green);
-  background: var(--light-yellow);
   width: 100%;
   font-size: 24px;
   padding: 20px;
+  border: 0;
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -2582,4 +2581,11 @@ select.js-form-drinks option {
   color: var(--darkest-green);
   background: var(--light-yellow);
   padding: 10px;
+}
+
+select:required:invalid {
+  color: #bac2cf;
+}
+option[value=""][disabled] {
+  display: none;
 }
