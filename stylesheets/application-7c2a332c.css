@@ -2601,3 +2601,27 @@ option[value=""][disabled] {
   font-size: 18px;
   border-radius: 5px;
 }
+
+#recomendaciones {
+  margin-top: 5rem;
+}
+
+.index-la__card--full {
+  padding-top: 5rem;
+}
+
+#lista-recomendaciones {
+  margin-top: 1rem;
+  padding: 0 10rem;
+}
+
+#lista-recomendaciones > li {
+  margin-bottom: 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Canela Web", serif;
+  font-size: 24px;
+}
