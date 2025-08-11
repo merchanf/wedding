@@ -438,12 +438,12 @@ canvas {
   z-index: 8;
 }
 .index-header__title-text {
-  height: 100px;
+  height: 120px;
   overflow: hidden;
 }
 @media only screen and (min-width: 770px) {
   .index-header__title-text {
-    height: 130px;
+    height: 150px;
   }
 }
 .index-header__title-text-1 {
@@ -2602,7 +2602,7 @@ option[value=""][disabled] {
   border-radius: 5px;
 }
 
-#recomendaciones {
+#recomendaciones_dep {
   margin-top: 16rem;
 }
 
@@ -2663,4 +2663,13 @@ option[value=""][disabled] {
   justify-content: flex-start;
   font-family: "Canela Web", serif;
   font-size: 24px;
+}
+
+#recomendaciones {
+  padding: 10rem 0;
+  background-color: white;
+}
+
+#recomendaciones > h2 {
+  font-family: "Canela Web", serif;
 }
