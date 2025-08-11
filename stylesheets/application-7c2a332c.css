@@ -696,6 +696,8 @@ div.index-bl-red-flower {
   top: 39%;
   left: -33%;
   z-index: 3;
+  width: 25px;
+  height: 25px;
 }
 @media only screen and (min-width: 770px) {
   div.index-bl-red-flower {
@@ -2602,17 +2604,41 @@ option[value=""][disabled] {
   border-radius: 5px;
 }
 
-#recomendaciones_dep {
-  margin-top: 16rem;
-}
-
 .index-la__card--full {
   padding-top: 2rem;
+}
+
+#recomendaciones {
+  padding: 5rem 0;
+  background-color: white;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+#recomendaciones > .container {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+#recomendaciones h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 36px;
+  text-align: center;
 }
 
 #lista-recomendaciones {
   margin-top: 1rem;
   padding: 0 1rem;
+}
+
+#lista-recomendaciones li {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1rem;
+  justify-items: center;
 }
 
 @media only screen and (min-width: 768px) {
@@ -2639,37 +2665,9 @@ option[value=""][disabled] {
 
   #lista-recomendaciones {
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #lista-recomendaciones > li {
-    max-width: 800px;
   }
 }
 
 .index-la__card--full > h2 {
   text-align: center;
-}
-
-#lista-recomendaciones > li {
-  margin-bottom: 1rem;
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
-}
-
-#recomendaciones {
-  padding: 10rem 0;
-  background-color: white;
-}
-
-#recomendaciones > h2 {
-  font-family: "Cormorant Garamond", serif;
 }
