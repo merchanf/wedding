@@ -16,7 +16,7 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
-  font-family: "calibre", "Helvetica Neue", "Helvetica", Helvetica, Arial,
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", Helvetica, Arial,
     sans-serif;
   font-weight: 400;
   background: var(--light-yellow);
@@ -1254,7 +1254,7 @@ div.index-br-green-dots {
   }
 }
 .index-event__detail p.sans {
-  font-family: "calibre", "Helvetica Neue", "Helvetica", Helvetica, Arial,
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", Helvetica, Arial,
     sans-serif;
   font-weight: 300;
 }
@@ -1586,7 +1586,7 @@ div.index-br-green-dots {
 }
 .index-la__card li a span,
 .index-la__card--full li a span {
-  font-family: "calibre", "Helvetica Neue", "Helvetica", Helvetica, Arial,
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", Helvetica, Arial,
     sans-serif;
   font-size: 12px;
 }
@@ -1775,7 +1775,7 @@ div.index-br-green-dots {
   display: block;
 }
 .index-rsvp__success {
-  font-family: "calibre", "Helvetica Neue", "Helvetica", Helvetica, Arial,
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", Helvetica, Arial,
     sans-serif;
   font-size: 24px;
   color: var(--darkest-green);
@@ -2609,10 +2609,10 @@ option[value=""][disabled] {
 }
 
 #recomendaciones {
+  margin: 10rem auto;
   padding: 5rem 0;
   background-color: white;
   max-width: 1140px;
-  margin: 0 auto;
 }
 
 #recomendaciones > .container {
@@ -2625,11 +2625,38 @@ option[value=""][disabled] {
   font-family: "Cormorant Garamond", serif;
   font-size: 36px;
   text-align: center;
+  margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: 770px) {
+  #recomendaciones {
+    margin: 5rem auto;
+    padding: 8rem 0;
+  }
+  #recomendaciones > .container {
+    max-width: 1100px;
+  }
+  #recomendaciones h3 {
+    font-size: 48px;
+    margin-bottom: 4rem;
+  }
+  #lista-recomendaciones {
+    margin-top: 2rem;
+    padding: 0 4rem;
+  }
+  #lista-recomendaciones li {
+    grid-template-columns: 70px 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    font-size: 24px;
+  }
 }
 
 #lista-recomendaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   margin-top: 1rem;
-  padding: 0 1rem;
 }
 
 #lista-recomendaciones li {
