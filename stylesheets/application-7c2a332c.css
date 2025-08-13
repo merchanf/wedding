@@ -696,8 +696,6 @@ div.index-bl-red-flower {
   top: 39%;
   left: -33%;
   z-index: 3;
-  width: 25px;
-  height: 25px;
 }
 @media only screen and (min-width: 770px) {
   div.index-bl-red-flower {
@@ -2697,4 +2695,30 @@ option[value=""][disabled] {
 
 .index-la__card--full > h2 {
   text-align: center;
+}
+
+.dress-code-colors {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.dress-code-colors li .index-bl-red-flower {
+  transform: scale(0.5);
+}
+
+.dress-code-colors li:first-child .index-bl-red-flower path {
+  stroke: black;
+}
+@media only screen and (min-width: 768px) {
+  .dress-code-colors li .index-bl-red-flower {
+    transform: scale(0.75);
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .dress-code-colors li .index-bl-red-flower {
+    transform: scale(1);
+  }
 }
