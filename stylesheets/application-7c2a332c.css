@@ -2629,6 +2629,22 @@ option[value=""][disabled] {
   margin-bottom: 2rem;
 }
 
+#lista-recomendaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+#lista-recomendaciones li {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1rem;
+  justify-items: center;
+}
+
 @media only screen and (min-width: 770px) {
   #recomendaciones {
     margin: 5rem auto;
@@ -2651,22 +2667,6 @@ option[value=""][disabled] {
     margin-bottom: 2rem;
     font-size: 24px;
   }
-}
-
-#lista-recomendaciones {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-#lista-recomendaciones li {
-  display: grid;
-  grid-template-columns: 50px 1fr;
-  gap: 1rem;
-  align-items: start;
-  margin-bottom: 1rem;
-  justify-items: center;
 }
 
 @media only screen and (min-width: 768px) {
