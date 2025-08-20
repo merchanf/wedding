@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --white: #eeedeb;
   --warm-beige: #b39976;
@@ -2721,4 +2724,8 @@ option[value=""][disabled] {
   .dress-code-colors li .index-bl-red-flower {
     transform: scale(1);
   }
+}
+
+.nav-list li a {
+  font-weight: 400;
 }
