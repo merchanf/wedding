@@ -149,9 +149,15 @@ const handleRsvpFormSubmission = () => {
           },
         }
       );
-      // Show success message
+      // Show appropriate success message
       $(".js-form").hide();
-      $(".js-form-success").show();
+      if (respuesta === "NO") {
+        $(".js-form-success").hide();
+        $(".js-form-success-decline").show();
+      } else {
+        $(".js-form-success-decline").hide();
+        $(".js-form-success").show();
+      }
     } catch (error) {
       alert("Ocurrió un error al enviar tu respuesta. Intenta de nuevo.");
       console.error(error);
