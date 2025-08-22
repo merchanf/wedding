@@ -127,16 +127,9 @@ const handleRsvpFormSubmission = () => {
     // Prepare fields to update
     const fields = {
       Asiste: respuesta === "YES" ? "si" : "no",
-      Bebida: bebida || "",
+      Bebida: [bebida || ""],
       "Restriccion dietaria": dieta || "",
     };
-
-    console.log("Enviando respuesta:", {
-      nombre: invitado.fields.Nombre,
-      respuesta,
-      dieta,
-      bebida,
-    });
 
     try {
       await axios.patch(
