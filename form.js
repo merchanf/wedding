@@ -48,7 +48,6 @@ const cargarInvitados = (invitados) => {
 
 $("#lista-invitados-input").on("change", async function () {
   const nombreSeleccionado = $(this).val();
-  console.log("Nombre seleccionado:", nombreSeleccionado);
   const invitados = window.invitados || [];
   let invitadoSeleccionado = invitados.find(
     (record) =>
@@ -97,4 +96,65 @@ async function fetchInvitados() {
 $(document).ready(function () {
   inicializar();
   fetchInvitados();
+  handleRsvpFormSubmission();
 });
+
+const handleRsvpFormSubmission = () => {
+  // Handle RSVP form submission
+  $(document).on("click", ".index-rsvp__button", async function (e) {
+    e.preventDefault();
+    const nombre = $("#lista-invitados-input").val();
+    const invitados = window.invitados || [];
+    const invitado = invitados.find(
+      (record) =>
+        record.fields.Nombre &&
+        record.fields.Nombre.toLowerCase() === nombre.toLowerCase()
+    );
+    if (!invitado) {
+      alert("Por favor selecciona tu nombre de la lista.");
+      return;
+    }
+
+    console.log({ invitado });
+
+    // Get RSVP answer
+    const respuesta = $(".js-rsvp-option.is-active").data("value") || "YES";
+    // Get dietary restriction
+    const dieta = $("#diet").val();
+    // Get preferred drink
+    const bebida = $("#cars").val();
+
+    // Prepare fields to update
+    const fields = {
+      Asiste: respuesta === "YES" ? "si" : "no",
+      Bebida: bebida || "",
+      "Restriccion dietaria": dieta || "",
+    };
+
+    console.log("Enviando respuesta:", {
+      nombre: invitado.fields.Nombre,
+      respuesta,
+      dieta,
+      bebida,
+    });
+
+    try {
+      await axios.patch(
+        `https://api.airtable.com/v0/appLOZBvwYemQ0FFn/invitados/${invitado.id}`,
+        { fields },
+        {
+          headers: {
+            authorization: `Bearer ${cancion}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      // Show success message
+      $(".js-form").hide();
+      $(".js-form-success").show();
+    } catch (error) {
+      alert("Ocurrió un error al enviar tu respuesta. Intenta de nuevo.");
+      console.error(error);
+    }
+  });
+};
