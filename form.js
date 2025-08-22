@@ -15,7 +15,6 @@ const filtrarInvitados = (invitados) => {
 };
 
 const cargarInvitados = (invitados) => {
-  const $input = $("#lista-invitados-input");
   const $datalist = $("#lista-invitados");
 
   // Guardar los invitados filtrados por Tier A
@@ -23,12 +22,8 @@ const cargarInvitados = (invitados) => {
     $("<option>")
       .val(record.fields.Nombre)
       .attr("data-id", record.id)
+      .addClass("hide")
       .appendTo($datalist);
-  });
-
-  // Actualizar opciones al escribir en el input
-  $input.on("input", function () {
-    actualizarOpciones(this.value);
   });
 };
 
@@ -50,10 +45,15 @@ async function fetchInvitados() {
   }
 }
 
+const actualizarInvitados = (invitadosActualizados) => {
+  // TODO: Implementar la lógica para actualizar la lista de invitados
+};
+
 $(document).ready(function () {
   inicializar();
   fetchInvitados();
   handleRsvpFormSubmission();
+  actualizarInvitados();
 });
 
 const handleRsvpFormSubmission = () => {
