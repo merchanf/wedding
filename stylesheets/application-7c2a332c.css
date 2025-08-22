@@ -1766,9 +1766,6 @@ div.index-br-green-dots {
 .index-rsvp__button.is-disabled {
   opacity: 0.5;
 }
-.index-rsvp__button:hover {
-  cursor: no-drop;
-}
 .index-rsvp__show {
   display: none;
 }
