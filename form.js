@@ -14,19 +14,6 @@ const filtrarInvitados = (invitados) => {
   });
 };
 
-const cargarInvitados = (invitados) => {
-  const $datalist = $("#lista-invitados");
-
-  // Guardar los invitados filtrados por Tier A
-  invitados.forEach((record) => {
-    $("<option>")
-      .val(record.fields.Nombre)
-      .attr("data-id", record.id)
-      .addClass("hide")
-      .appendTo($datalist);
-  });
-};
-
 async function fetchInvitados() {
   try {
     const response = await axios.get(
@@ -38,16 +25,57 @@ async function fetchInvitados() {
         },
       }
     );
-    window.invitados = response.data.records;
-    cargarInvitados(response.data.records);
+    window.invitados = filtrarInvitados(response.data.records);
   } catch (error) {
     console.error(error);
   }
 }
 
-const actualizarInvitados = (invitadosActualizados) => {
-  // TODO: Implementar la lógica para actualizar la lista de invitados
+// Normaliza texto quitando acentos y convirtiendo a minúsculas
+function normalizarTexto(texto) {
+  return texto
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "") // quita diacríticos (acentos)
+    .replace(/[^\p{L}\p{N} ]/gu, "") // quita caracteres especiales excepto letras/números/espacio
+    .toLowerCase();
+}
+
+const actualizarInvitados = () => {
+  const invitados = window.invitados || [];
+  const $input = $("#lista-invitados-input");
+  const $datalist = $("#lista-invitados");
+  const valorInput = normalizarTexto($input.val() || "");
+  if (valorInput.length === 0) {
+    $datalist.empty();
+    return;
+  }
+  $datalist.empty();
+  if (!Array.isArray(invitados)) return;
+  invitados.forEach((record) => {
+    const nombre = record.fields.Nombre || "";
+    const nombreNormalizado = normalizarTexto(nombre);
+    // Solo mostrar si el nombre empieza exactamente igual a lo tipeado
+    if (valorInput.length === 0 || nombreNormalizado.startsWith(valorInput)) {
+      $("<option>").val(nombre).attr("data-id", record.id).appendTo($datalist);
+    }
+  });
 };
+
+// Actualizar datalist en cada input
+$(document).on("input", "#lista-invitados-input", function () {
+  if (!window.invitados) return;
+  const valorInput = normalizarTexto($(this).val() || "");
+  // Verifica si el input coincide exactamente con algún invitado
+  const match = window.invitados.some((record) => {
+    const nombre = record.fields.Nombre || "";
+    return normalizarTexto(nombre) === valorInput && valorInput.length > 0;
+  });
+  if (match) {
+    // Si hay match exacto, no actualices el datalist (no lo borres)
+    return;
+  }
+  actualizarInvitados(window.invitados);
+});
 
 $(document).ready(function () {
   inicializar();
