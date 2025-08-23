@@ -26,6 +26,7 @@ async function fetchInvitados() {
       }
     );
     window.invitados = filtrarInvitados(response.data.records);
+    // console.log({ invitados: window.invitados });
   } catch (error) {
     console.error(error);
   }
@@ -137,9 +138,16 @@ const handleRsvpFormSubmission = () => {
     // Prepare fields to update
     const fields = {
       Asiste: respuesta === "YES" ? "si" : "no",
-      Bebida: [bebida || ""],
-      "Restriccion dietaria": dieta || "",
     };
+
+    if (respuesta === "YES") {
+      if (bebida && bebida.trim() !== "") {
+        fields.Bebida = [bebida];
+      }
+      if (dieta && dieta.trim() !== "") {
+        fields["Restriccion dietaria"] = dieta;
+      }
+    }
 
     try {
       await axios.patch(
@@ -152,8 +160,11 @@ const handleRsvpFormSubmission = () => {
           },
         }
       );
-      // Show appropriate success message
+      // Show appropriate success message with apodo
       $(".js-form").hide();
+      const apodo = invitado.fields.Apodo || "";
+      $(".js-form-success span").text(`${apodo}!`);
+      $(".js-form-success-decline span").text(`${apodo}!`);
       if (respuesta === "NO") {
         $(".js-form-success").hide();
         $(".js-form-success-decline").show();
