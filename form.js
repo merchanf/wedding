@@ -1,3 +1,22 @@
+// Mostrar el formulario vacío al hacer click en 'llenar otra confirmación'
+$(document).on("click", ".js-rsvp-reset", function (e) {
+  e.preventDefault();
+  // Limpiar campos
+  $("#lista-invitados-input").val("");
+  $("#diet").val("");
+  $("#cars").val("");
+  // Restaurar opciones RSVP
+  const yesOption = $(".index-rsvp__option[data-value='YES']");
+  const noOption = $(".index-rsvp__option[data-value='NO']");
+  yesOption.html("Claro que voy!");
+  noOption.html("No iré");
+  $(".js-rsvp-option").removeClass("is-active");
+  yesOption.addClass("is-active");
+  // Mostrar formulario y ocultar mensajes
+  $(".js-form").show();
+  $(".js-form-success").hide();
+  $(".js-form-success-decline").hide();
+});
 const doo = "patvMe3x3zMRqbA8l.";
 const re = "b4e97696fdb417baec7f5170ecae522";
 const mi = "b12890050b42794680af62fb5a046c14f";
