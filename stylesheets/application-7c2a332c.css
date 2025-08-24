@@ -1779,11 +1779,8 @@ div.index-br-green-dots {
   color: var(--darkest-green);
   text-align: center;
   margin-top: 6em;
-}
-.index-rsvp__success span {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 72px;
-  color: var(--dark-green);
+  display: flex;
+  flex-direction: column;
 }
 .index-rsvp__left {
   position: absolute;
@@ -2729,4 +2726,25 @@ option[value=""][disabled] {
 
 #lista-invitados .hide {
   display: none;
+}
+
+.js-rsvp-reset {
+  color: var(--darkest-green);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.index-rsvp__success-message {
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", "Helvetica Neue", "Helvetica", Helvetica, Arial,
+    sans-serif;
+  color: black;
+}
+
+.index-rsvp__success span:first-child {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 72px;
+  color: var(--dark-green);
 }

@@ -97,36 +97,11 @@ $(document).on("input", "#lista-invitados-input", function () {
   actualizarInvitados(window.invitados);
 });
 
-function setupRsvpOptionImageSwap() {
-  const yesOption = $(".index-rsvp__option[data-value='YES']");
-  const noOption = $(".index-rsvp__option[data-value='NO']");
-  const yesText = "Claro que voy!";
-  const noText = "No iré";
-  const celebracionImg =
-    '<img src="./images/celebracion.png" alt="Celebración" style="height:32px;">';
-  const sadImg = '<img src="./images/sad.png" alt="Sad" style="height:32px;">';
-
-  function restoreOptions() {
-    yesOption.html(yesText);
-    noOption.html(noText);
-  }
-
-  $(document).on("click", ".js-rsvp-option", function () {
-    restoreOptions();
-    if ($(this).data("value") === "YES") {
-      yesOption.html(celebracionImg);
-    } else if ($(this).data("value") === "NO") {
-      noOption.html(sadImg);
-    }
-  });
-}
-
 $(document).ready(function () {
   inicializar();
   fetchInvitados();
   handleRsvpFormSubmission();
   actualizarInvitados();
-  setupRsvpOptionImageSwap();
 });
 
 const handleRsvpFormSubmission = () => {
@@ -182,8 +157,7 @@ const handleRsvpFormSubmission = () => {
       // Show appropriate success message with apodo
       $(".js-form").hide();
       const apodo = invitado.fields.Apodo || "";
-      $(".js-form-success span").text(`${apodo}!`);
-      $(".js-form-success-decline span").text(`${apodo}!`);
+      $(".index-rsvp__success-message-nickname").text(`${apodo}!`);
       if (respuesta === "NO") {
         $(".js-form-success").hide();
         $(".js-form-success-decline").show();
