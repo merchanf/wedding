@@ -1,3 +1,61 @@
+function moveUnderlined() {
+  const $underline = $(".nav-indicator");
+  const $activeLink = $(".nav-list a.active");
+  if ($activeLink.length) {
+    const linkOffset = $activeLink.offset();
+    const linkWidth = $activeLink.outerWidth();
+    const navOffset = $underline.parent().offset();
+    const leftPosition = linkOffset.left - navOffset.left;
+    $underline.css({
+      transform: `translateX(${leftPosition}px) scaleX(${linkWidth / 15})`,
+      opacity: 1,
+    });
+  } else {
+    $underline.css({ opacity: 0, transform: "translateX(0) scaleX(0.01)" });
+  }
+}
+
+$(document).on("click", ".nav-list a", function (e) {
+  e.preventDefault();
+  $(".nav-list a").removeClass("active");
+  $(this).addClass("active");
+  moveUnderlined();
+  const targetId = $(this).attr("href");
+  const $target = $(targetId);
+  if ($target.length) {
+    $("html, body").animate(
+      {
+        scrollTop: $target.offset().top - 60, // Ajusta el valor según la altura de tu navbar
+      },
+      500
+    );
+  }
+});
+
+$(window).on("scroll", function () {
+  const scrollPosition = $(window).scrollTop();
+  let currentSectionId = "";
+  $(".nav-list a").each(function () {
+    const targetId = $(this).attr("href");
+    const $target = $(targetId);
+    if ($target.length) {
+      const sectionTop = $target.offset().top - 70; // Ajusta según la altura de tu navbar
+      if (scrollPosition >= sectionTop) {
+        currentSectionId = targetId;
+      }
+    }
+  });
+  if (currentSectionId) {
+    $(".nav-list a").removeClass("active");
+    $(`.nav-list a[href='${currentSectionId}']`).addClass("active");
+    moveUnderlined();
+  }
+});
+
+$(window).on("resize", function () {
+  moveUnderlined();
+});
+
 // Mostrar el formulario vacío al hacer click en 'llenar otra confirmación'
 $(document).on("click", ".js-rsvp-reset", function (e) {
   e.preventDefault();
