@@ -2829,11 +2829,14 @@ option[value=""][disabled] {
 @media only screen and (max-width: 767px) {
   .envelope-recipient,
   .envelope-companion {
-    font-size: 2.2rem;
+    font-size: 2rem;
+    padding: 0 1rem;
   }
   .envelope-text {
     font-size: 1rem;
     margin-top: 2rem;
+    padding: 0 1rem;
+    text-align: center;
   }
   .button-base {
     font-size: 1rem;
