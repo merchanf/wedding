@@ -1,14 +1,3 @@
-// Oculta el overlay de sobre si no hay id en la URL, pero muestra la página normalmente
-$(function () {
-  var urlParams = new URLSearchParams(window.location.search);
-  var id = urlParams.get("id");
-  if (!id) {
-    $("#envelope-intro-overlay").hide();
-  } else {
-    $("#envelope-intro-overlay").show();
-  }
-});
-
 // Desvanecer overlay de invitación al hacer clic en el botón
 $(document).on("click", "#envelope-intro-overlay .button-base", function () {
   $("#envelope-intro-overlay").addClass("fade-out");
@@ -23,18 +12,27 @@ function getQueryParam(name) {
   return urlParams.get(name);
 }
 
-function setEnvelopeGuestInfo() {
-  // Esperar a que window.invitados esté disponible
-  if (!window.invitados) {
-    setTimeout(setEnvelopeGuestInfo, 200);
+async function setEnvelopeGuestInfo() {
+  const id = getQueryParam("id");
+  if (!id) {
+    $("#envelope-intro-overlay").css("display", "none");
     return;
   }
-  const id = getQueryParam("id");
-  if (!id) return;
+
+  while (window.invitados == null) {
+    console.log("Esperando a que los datos de invitados estén disponibles...");
+    await new Promise((resolve) => setTimeout(resolve, 200));
+  }
+  console.log("Datos de invitados disponibles:");
+
   const invitadoEncontrado = window.invitados.find(
     (record) => record.id === id
   );
+
   if (invitadoEncontrado) {
+    $("#envelope-intro-overlay").css("display", "flex");
+    $(".envelope-body").css("display", "flex");
+    $(".loader").css("display", "none");
     $(".envelope-recipient").text(invitadoEncontrado.fields.Apodo || "");
     var compania =
       invitadoEncontrado.fields.Compania ||
@@ -50,6 +48,8 @@ function setEnvelopeGuestInfo() {
         "Queremos compartir contigo un día muy especial"
       );
     }
+  } else {
+    $("#envelope-intro-overlay").css("display", "none");
   }
 }
 
