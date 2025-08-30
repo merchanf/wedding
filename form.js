@@ -102,8 +102,9 @@ async function fetchInvitados() {
         },
       }
     );
+    console.log("full invitados", response.data.records);
     window.invitados = filtrarInvitados(response.data.records);
-    // console.log({ invitados: window.invitados });
+    console.log({ invitados: window.invitados });
   } catch (error) {
     console.error(error);
   }

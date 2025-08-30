@@ -2802,7 +2802,6 @@ option[value=""][disabled] {
 
 .envelope-guests {
   position: relative;
-  min-height: 10rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -2835,5 +2834,8 @@ option[value=""][disabled] {
   .envelope-text {
     font-size: 1rem;
     margin-top: 2rem;
+  }
+  .button-base {
+    font-size: 1rem;
   }
 }
