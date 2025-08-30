@@ -2764,3 +2764,76 @@ option[value=""][disabled] {
   transform-origin: left center;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
 }
+.button-base {
+  background: var(--dark-green);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  margin-top: 1.5em;
+  height: 48px;
+  padding: 0% 2rem;
+}
+
+.envelope-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#envelope-intro-overlay {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--light-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.9s cubic-bezier(0.52, 0.12, 0.46, 1.1);
+}
+#envelope-intro-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope-guests {
+  position: relative;
+  min-height: 10rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.envelope-recipient {
+  font-size: 4rem;
+  font-family: "Cormorant Garamond", serif;
+  color: var(--dark-green);
+}
+
+.envelope-companion {
+  font-size: 4rem;
+  font-family: "Cormorant Garamond", serif;
+  color: var(--dark-green);
+  text-align: center;
+}
+
+.envelope-text {
+  margin-top: 4rem;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .envelope-recipient,
+  .envelope-companion {
+    font-size: 2.2rem;
+  }
+  .envelope-text {
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+}
