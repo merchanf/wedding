@@ -1,9 +1,11 @@
-// Oculta el overlay si no hay id en la URL
+// Oculta el overlay de sobre si no hay id en la URL, pero muestra la página normalmente
 $(function () {
   var urlParams = new URLSearchParams(window.location.search);
   var id = urlParams.get("id");
   if (!id) {
     $("#envelope-intro-overlay").hide();
+  } else {
+    $("#envelope-intro-overlay").show();
   }
 });
 
