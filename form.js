@@ -93,17 +93,34 @@ const filtrarInvitados = (invitados) => {
 
 async function fetchInvitados() {
   try {
-    const response = await axios.get(
-      "https://api.airtable.com/v0/appLOZBvwYemQ0FFn/invitados",
-      {
+    let allRecords = [];
+    let offset = null;
+
+    do {
+      const url = offset
+        ? `https://api.airtable.com/v0/appLOZBvwYemQ0FFn/invitados?offset=${offset}`
+        : "https://api.airtable.com/v0/appLOZBvwYemQ0FFn/invitados";
+
+      const response = await axios.get(url, {
         headers: {
           authorization: `Bearer ${cancion}`,
           "Content-Type": "application/json",
         },
-      }
-    );
-    console.log("full invitados", response.data.records);
-    window.invitados = filtrarInvitados(response.data.records);
+      });
+
+      // Agregar los registros de esta página a la lista total
+      allRecords = allRecords.concat(response.data.records);
+
+      // Verificar si hay más páginas
+      offset = response.data.offset || null;
+
+      console.log(
+        `Fetched ${response.data.records.length} records, total so far: ${allRecords.length}`
+      );
+    } while (offset); // Continuar mientras haya offset
+
+    console.log("full invitados", allRecords);
+    window.invitados = filtrarInvitados(allRecords);
     console.log({ invitados: window.invitados });
   } catch (error) {
     console.error(error);
